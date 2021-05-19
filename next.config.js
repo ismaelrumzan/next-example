@@ -56,6 +56,7 @@ const nextConfig = {
     return [
       {
         source: '/(.*)',
+        locale: false,
         headers: [
           {
             key: 'Content-Security-Policy',
@@ -63,18 +64,42 @@ const nextConfig = {
           },
         ],
       },
+      {
+        source: '/en-au/(.*)',
+        headers: [
+          {
+            key: 'Content-Security-Policy',
+            value: csp,
+          },
+        ],
+      },
+      {
+        source: '/en-AU/(.*)',
+        headers: [
+          {
+            key: 'Content-Security-Policy',
+            value: csp,
+          },
+        ],
+      },
+      {
+        source: '/en-US/(.*)',
+        headers: [
+          {
+            key: 'Content-Security-Policy',
+            value: csp,
+          },
+        ],
+      }
     ];
   },
   i18n: {
     locales: [
       'en-au',
       'en-AU',
-      'en-nz',
-      'en-NZ',
-      'en-gb',
-      'en-GB',
+      'en-US',
     ],
-    defaultLocale: 'en-au',
+    defaultLocale: 'en-US',
   },
 };
 
